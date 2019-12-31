@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/12 | 赵小凡的博客</title>
+  <title>动态规划：数组分割问题 | 赵小凡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本科毕业于华中科技大学光电学院，硕士就读于华中科技大学计算机学院。目前硕士在读。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="赵小凡的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/12/index.html">
+  <meta name="description" content="数组分割编程之美 2.18 题目描述: 有一个无序、元素个数为2n的正整数数组，要求：如何能把这个数组分割为元素个数为n的两个数组，并使两个子数组的和最接近。(输出子数组和最接近时子数组和的差值) 测试用例:  Input: {1,5,7,8,9,6,3,11,20,17} Output: 1 Explanation: {1,3,11,8,20}, {5,7,9,6,17} 分析与解法若同时考虑两">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划：数组分割问题">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%9A%E6%95%B0%E7%BB%84%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="赵小凡的博客">
-<meta property="og:description" content="本科毕业于华中科技大学光电学院，硕士就读于华中科技大学计算机学院。目前硕士在读。">
+<meta property="og:description" content="数组分割编程之美 2.18 题目描述: 有一个无序、元素个数为2n的正整数数组，要求：如何能把这个数组分割为元素个数为n的两个数组，并使两个子数组的和最接近。(输出子数组和最接近时子数组和的差值) 测试用例:  Input: {1,5,7,8,9,6,3,11,20,17} Output: 1 Explanation: {1,3,11,8,20}, {5,7,9,6,17} 分析与解法若同时考虑两">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-31T02:10:31.000Z">
+<meta property="article:modified_time" content="2019-12-31T03:34:32.919Z">
 <meta property="article:author" content="cctw-zed">
 <meta name="twitter:card" content="summary">
   
@@ -144,157 +146,171 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-动态规划：数组分割问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      动态规划：数组分割问题
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%9A%E6%95%B0%E7%BB%84%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/" class="archive-article-date">
+
+        
+        <a href="/2019/12/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%9A%E6%95%B0%E7%BB%84%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/" class="archive-article-date">
   	<time datetime="2019-12-31T02:10:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%9A%E6%95%B0%E7%BB%84%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/">动态规划：数组分割问题</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数组分割"><a href="#数组分割" class="headerlink" title="数组分割"></a>数组分割</h2><p>编程之美 2.18</p>
+<p><strong>题目描述:</strong> 有一个无序、元素个数为2n的正整数数组，要求：如何能把这个数组分割为元素个数为n的两个数组，并使两个子数组的和最接近。(输出子数组和最接近时子数组和的差值)</p>
+<p><strong>测试用例:</strong> </p>
+<p>Input: {1,5,7,8,9,6,3,11,20,17}</p>
+<p>Output: 1</p>
+<p>Explanation: {1,3,11,8,20}, {5,7,9,6,17}</p>
+<h4 id="分析与解法"><a href="#分析与解法" class="headerlink" title="分析与解法"></a>分析与解法</h4><p>若同时考虑两个子数组和，则两个数组同时在变，难以判断。这样考虑让人感觉无从下手。</p>
+<p>考虑最极端的情况，子数组和最接近时两个子数组和均为原数组和Sum的一半。故可将问题转换为：</p>
+<p><strong>从2n个整数中找出n个，使得它们的和尽可能地靠近所有整数之和的一半。</strong></p>
+<p>这样，就将原来的问题简化了许多，感觉上就是个可以解决的问题了。</p>
+<p>考虑其中一个子数组。假设2n个整数之和为Sum，从2n个整数中找出n个元素的和，有三种可能：大于Sum/2, 小于或等于Sum/2。我们考虑取值小于或等于Sum/2的情况，另一种情况也是一样的。</p>
+<p>现在的问题与0-1背包问题类似，我们考虑用动态规划来解决此问题。</p>
+<h4 id="动态规划思路"><a href="#动态规划思路" class="headerlink" title="动态规划思路"></a>动态规划思路</h4><p>先来看看熟悉的0-1背包问题：给定n个物品和一个容量为C的背包，物品i的体积是w_i, 价值为v_i。应该如何选择装入背包的物品，使得装入背包的物品的总价值最大？</p>
+<p><strong>解法：</strong> 将任务分为n步，第i步的定义是前i件物品中取总体积不超过j的物品所能达到的最大价值。<strong>根据第i件物品是否添加到背包中，可以分为两种情况：</strong></p>
+<ul>
+<li>第i件物品未添加到背包，则总体积不超过j的前i件物品的最大价值也就等于总体积不超过j的前i-1件物品的最大价值，即：<code>dp[i][j] = dp[i-1][j]</code>；</li>
+<li>第i件物品添加到背包中，则<code>dp[i][j] = dp[i-1][j-w_i] + v_i</code></li>
+</ul>
+<p>这两种情况取价值大者。状态转移方程为：<code>dp[i][j] = max(dp[i-1][j], dp[i-1][j-w_i] + v_i)</code></p>
+<p>再来看本题。</p>
+<p><strong>解法：</strong> 将任务分为2n步，第i步的定义是前i个整数中任意j个整数(这里是整数个数，0-1背包问题中是体积)的和，所有可能取值之集合为S(i,j).(只考虑取值小于Sum/2的情况)。假设数组A[2n+1]存储2n个整数。</p>
+<p>将第i步分解为两种情况，首先得到前i-1个元素中所有可能取值（不包括第i个整数），再合上包括第i个整数的情况，则有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">S(i,1) &#x3D; &#123;A[i] | 0 &lt; i &lt;&#x3D; 2n&#125;;</span><br><span class="line">S(i,i) &#x3D; &#123;A[1]+A[2]+...+A[i]&#125;;</span><br><span class="line">S(i,k) &#x3D; S(i-1,k) U &#123;A[k] + v | v 属于 S(i-1,k-1)&#125;.</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>根据此递推公式计算。最后找出集合S(2n,n)中与Sum/2最接近的值。</p>
+<h5 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h5><p>上述思路需要不停遍历S集合，复杂度与i有关，当n比较大时效率很低。我们可以假定S(i,j)的可能值v，而A[i]已知，再去判断v-A[i]是否在S(i-1,j-1)中。这样遍历次数只是与v相关，也就是与Sum/2相关，在n较大而每个整数的值相对较小时，有较高的效率。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%9A%E6%95%B0%E7%BB%84%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/30/Java%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2019-12-30T12:14:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/30/Java%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java学习杂记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/30/Java%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/">Java学习杂记</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/30/hexo%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2019-12-30T01:39:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/30/hexo%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">hexo搭建记录</a>
-    </h1>
+  <div id="SOHUCS" sid="动态规划：数组分割问题" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyuC0vSPi",
+        conf: "prod_268b2078606f6866e1f8228bd88a8840"
+    });
+</script>
+</script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/29/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/" class="archive-article-date">
-  	<time datetime="2019-12-29T08:12:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/29/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/">第一篇博文</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/29/hello-world/" class="archive-article-date">
-  	<time datetime="2019-12-29T08:07:10.208Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/29/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -317,8 +333,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
