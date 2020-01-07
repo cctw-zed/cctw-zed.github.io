@@ -146,6 +146,77 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode-Day2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/07/LeetCode-Day2/">LeetCode Day2</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/07/LeetCode-Day2/" class="archive-article-date">
+  	<time datetime="2020-01-07T12:56:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="20-Valid-Parentheses"><a href="#20-Valid-Parentheses" class="headerlink" title="20 Valid Parentheses"></a>20 Valid Parentheses</h2><p>  若是只有一种括号，只要使用一个counter就可。存在多种括号，可使用堆栈解决。提供两种解法。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">	  Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">char</span> c : s.toCharArray()) &#123;</span><br><span class="line">		  <span class="keyword">if</span> (c == <span class="string">'('</span>)</span><br><span class="line">			  stack.push(<span class="string">')'</span>);</span><br><span class="line">		  <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'&#123;'</span>)</span><br><span class="line">			  stack.push(<span class="string">'&#125;'</span>);</span><br><span class="line">		  <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'['</span>)</span><br><span class="line">			  stack.push(<span class="string">']'</span>);</span><br><span class="line">		  <span class="keyword">else</span> <span class="keyword">if</span> (stack.isEmpty() || stack.pop() != c)</span><br><span class="line">			  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	  &#125;</span><br><span class="line">	<span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的解法。问题，这里使用switch不如if-else简洁。只是记录下来。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>)   <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">switch</span>(c) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'('</span>:</span><br><span class="line">                    stack.push(c);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'['</span>:</span><br><span class="line">                    stack.push(c);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'&#123;'</span>:</span><br><span class="line">                    stack.push(c);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">')'</span>:</span><br><span class="line">                    <span class="keyword">if</span> (stack.empty() || stack.peek() != <span class="string">'('</span>)  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">']'</span>:</span><br><span class="line">                    <span class="keyword">if</span> (stack.empty() || stack.peek() != <span class="string">'['</span>)  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'&#125;'</span>:</span><br><span class="line">                    <span class="keyword">if</span> (stack.empty() || stack.peek() != <span class="string">'&#123;'</span>)  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (stack.empty())  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="28-Implement-strStr"><a href="#28-Implement-strStr" class="headerlink" title="28 Implement strStr()"></a>28 Implement strStr()</h2><p>我的解法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (needle.equals(<span class="string">""</span>))   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (haystack == <span class="keyword">null</span> || needle == <span class="keyword">null</span> || haystack.equals(<span class="string">""</span>)) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] s1 = haystack.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> len1 = s1.length;</span><br><span class="line">        <span class="keyword">char</span>[] s2 = needle.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> len2 = s2.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len1; i++) &#123;</span><br><span class="line">            <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len2; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i+j == len1)    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (s1[i+j] != s2[j]) &#123;</span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag)   <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>论坛中一个简洁的解法。但是速度较之略慢。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; ; j++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (j == needle.length()) <span class="keyword">return</span> i;</span><br><span class="line">          <span class="keyword">if</span> (i + j == haystack.length()) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">          <span class="keyword">if</span> (needle.charAt(j) != haystack.charAt(i + j)) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/07/LeetCode-Day2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LeetCode-Day1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

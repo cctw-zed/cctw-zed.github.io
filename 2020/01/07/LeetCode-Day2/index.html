@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 赵小凡的博客</title>
+  <title>LeetCode Day2 | 赵小凡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本科毕业于华中科技大学光电学院，硕士就读于华中科技大学计算机学院。目前硕士在读。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="赵小凡的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="20 Valid Parentheses  若是只有一种括号，只要使用一个counter就可。存在多种括号，可使用堆栈解决。提供两种解法。   1234567891011121314151617  class Solution &amp;#123;  public boolean isValid(String s) &amp;#123;	  Stack&lt;Character&gt; stack &#x3D; new S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Day2">
+<meta property="og:url" content="http://yoursite.com/2020/01/07/LeetCode-Day2/index.html">
 <meta property="og:site_name" content="赵小凡的博客">
-<meta property="og:description" content="本科毕业于华中科技大学光电学院，硕士就读于华中科技大学计算机学院。目前硕士在读。">
+<meta property="og:description" content="20 Valid Parentheses  若是只有一种括号，只要使用一个counter就可。存在多种括号，可使用堆栈解决。提供两种解法。   1234567891011121314151617  class Solution &amp;#123;  public boolean isValid(String s) &amp;#123;	  Stack&lt;Character&gt; stack &#x3D; new S">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-07T12:56:08.000Z">
+<meta property="article:modified_time" content="2020-01-07T13:16:10.545Z">
 <meta property="article:author" content="cctw-zed">
 <meta name="twitter:card" content="summary">
   
@@ -144,103 +146,153 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-LeetCode-Day2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      LeetCode Day2
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/07/LeetCode-Day2/" class="archive-article-date">
+
+        
+        <a href="/2020/01/07/LeetCode-Day2/" class="archive-article-date">
   	<time datetime="2020-01-07T12:56:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/07/LeetCode-Day2/">LeetCode Day2</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="20-Valid-Parentheses"><a href="#20-Valid-Parentheses" class="headerlink" title="20 Valid Parentheses"></a>20 Valid Parentheses</h2><p>  若是只有一种括号，只要使用一个counter就可。存在多种括号，可使用堆栈解决。提供两种解法。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">	  Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">char</span> c : s.toCharArray()) &#123;</span><br><span class="line">		  <span class="keyword">if</span> (c == <span class="string">'('</span>)</span><br><span class="line">			  stack.push(<span class="string">')'</span>);</span><br><span class="line">		  <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'&#123;'</span>)</span><br><span class="line">			  stack.push(<span class="string">'&#125;'</span>);</span><br><span class="line">		  <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'['</span>)</span><br><span class="line">			  stack.push(<span class="string">']'</span>);</span><br><span class="line">		  <span class="keyword">else</span> <span class="keyword">if</span> (stack.isEmpty() || stack.pop() != c)</span><br><span class="line">			  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	  &#125;</span><br><span class="line">	<span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的解法。问题，这里使用switch不如if-else简洁。只是记录下来。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>)   <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">switch</span>(c) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'('</span>:</span><br><span class="line">                    stack.push(c);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'['</span>:</span><br><span class="line">                    stack.push(c);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'&#123;'</span>:</span><br><span class="line">                    stack.push(c);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">')'</span>:</span><br><span class="line">                    <span class="keyword">if</span> (stack.empty() || stack.peek() != <span class="string">'('</span>)  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">']'</span>:</span><br><span class="line">                    <span class="keyword">if</span> (stack.empty() || stack.peek() != <span class="string">'['</span>)  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'&#125;'</span>:</span><br><span class="line">                    <span class="keyword">if</span> (stack.empty() || stack.peek() != <span class="string">'&#123;'</span>)  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (stack.empty())  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="28-Implement-strStr"><a href="#28-Implement-strStr" class="headerlink" title="28 Implement strStr()"></a>28 Implement strStr()</h2><p>我的解法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (needle.equals(<span class="string">""</span>))   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (haystack == <span class="keyword">null</span> || needle == <span class="keyword">null</span> || haystack.equals(<span class="string">""</span>)) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] s1 = haystack.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> len1 = s1.length;</span><br><span class="line">        <span class="keyword">char</span>[] s2 = needle.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> len2 = s2.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len1; i++) &#123;</span><br><span class="line">            <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len2; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i+j == len1)    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (s1[i+j] != s2[j]) &#123;</span><br><span class="line">                    flag = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag)   <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>论坛中一个简洁的解法。但是速度较之略慢。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">strStr</span><span class="params">(String haystack, String needle)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; ; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; ; j++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (j == needle.length()) <span class="keyword">return</span> i;</span><br><span class="line">          <span class="keyword">if</span> (i + j == haystack.length()) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">          <span class="keyword">if</span> (needle.charAt(j) != haystack.charAt(i + j)) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/07/LeetCode-Day2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/06/LeetCode-Day1/" class="archive-article-date">
-  	<time datetime="2020-01-06T14:18:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/06/LeetCode-Day1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode Day1</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/06/LeetCode-Day1/">LeetCode Day1</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/06/%E5%A6%82%E4%BD%95%E5%88%B7LeetCode/" class="archive-article-date">
-  	<time datetime="2020-01-06T08:24:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/06/%E5%A6%82%E4%BD%95%E5%88%B7LeetCode/">如何刷LeetCode</a>
-    </h1>
+  <div id="SOHUCS" sid="LeetCode-Day2" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyuC0vSPi",
+        conf: "prod_268b2078606f6866e1f8228bd88a8840"
+    });
+</script>
+</script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -263,8 +315,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
